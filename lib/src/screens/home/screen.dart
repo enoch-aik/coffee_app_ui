@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 //TAB BAR ==> Espresso Latte Cappuccino Cafetiere
                 Padding(
-                  padding: EdgeInsets.only(top: 25.h),
+                  padding: EdgeInsets.symmetric(vertical: 25.h),
                   child: TabBar(
                       labelColor: CustomColors.brown,
                       indicator: RoundedTabIndicator(color: CustomColors.brown),
@@ -92,6 +92,62 @@ class HomeScreen extends StatelessWidget {
                           text: 'Cafetière',
                         ),
                       ]),
+                ),
+
+                Container(
+                  width: 160.w,
+                  height: 220.h,
+                  decoration: BoxDecoration(
+                      color: CustomColors.white.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(25.r),
+                      boxShadow: const [
+                        BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1))
+                      ]),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(10.w),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25.r),
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                child: Image.asset(
+                                  'assets/images/espresso.png',
+                                  filterQuality: FilterQuality.high,
+                                ),
+                              ),
+                              Positioned(
+                                right: 0,
+                                top: 0,
+                                child: Container(
+                                  width: 73.w,
+                                  height: 26.h,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 0, 0, 0.9),
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(25.r),
+                                          topRight: Radius.circular(25.r))),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.white,size: 15,
+                                      ),
+                                      KText(
+                                        '4.5',
+                                        color: CustomColors.white,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
