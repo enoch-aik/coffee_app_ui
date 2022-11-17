@@ -1,8 +1,8 @@
-import 'package:coffee_app_ui/screens/splash/screen.dart';
-import 'package:coffee_app_ui/src/res/dark_theme.dart';
+import 'package:coffee_app_ui/src/screens/splash/screen.dart';
 import 'package:coffee_app_ui/src/router/routes.dart';
 
 import 'exports.dart';
+import 'src/res/theme.dart';
 
 void main() {
   runApp(const MyApp());
