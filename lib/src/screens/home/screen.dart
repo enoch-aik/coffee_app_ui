@@ -111,6 +111,7 @@ class HomeScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25.r),
                           child: Stack(
                             children: [
+                              //GET COLORS HERE
                               SizedBox(
                                 child: Image.asset(
                                   'assets/images/espresso.png',
