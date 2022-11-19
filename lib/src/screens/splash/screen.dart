@@ -55,9 +55,11 @@ class SplashScreen extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(CustomColors.brown),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100.r))),elevation: MaterialStateProperty.all(5)),
-
-                    onPressed: () {context.go('/home');},
+                            borderRadius: BorderRadius.circular(100.r))),
+                        elevation: MaterialStateProperty.all(5)),
+                    onPressed: () {
+                      context.go('/home');
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

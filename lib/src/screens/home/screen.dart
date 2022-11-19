@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     'Find the best\nCoffee to your taste',
                     fontWeight: FontWeight.w600,
                     fontSize: 22.sp,
-                    color: CustomColors.darkTextColor,
+                    color: CustomColors.defaultTextColor,
                   ),
                 ),
 
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       padding: EdgeInsets.zero,
                       isScrollable: true,
-                      unselectedLabelColor: CustomColors.darkTextColor,
+                      unselectedLabelColor: CustomColors.defaultTextColor,
                       tabs: const [
                         Tab(
                           text: 'Espresso',
@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
 //COFFEE CARD
                 Container(
                   width: 160.w,
-                  height: 220.h,
+                  //height: 220.h,
                   decoration: BoxDecoration(
                       color: CustomColors.white.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(25.r),
@@ -104,6 +104,7 @@ class HomeScreen extends StatelessWidget {
                         BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1))
                       ]),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: EdgeInsets.all(10.w),
@@ -120,30 +121,104 @@ class HomeScreen extends StatelessWidget {
                               Positioned(
                                 right: 0,
                                 top: 0,
-                                child: Container(
-                                  width: 73.w,
-                                  height: 26.h,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromRGBO(0, 0, 0, 0.9),
-                                      borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(25.r),
-                                          topRight: Radius.circular(25.r))),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.white,size: 15,
-                                      ),
-                                      KText(
-                                        '4.5',
-                                        color: CustomColors.white,
-                                      )
-                                    ],
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(25.r),
+                                      topRight: Radius.circular(25.r)),
+                                  child: Container(
+                                    width: 73.w,
+                                    height: 26.h,
+                                    decoration: BoxDecoration(
+                                        color: CustomColors.brown,
+                                        //color: Color.fromRGBO(0, 0, 0, 0.9),
+                                        gradient: LinearGradient(colors: [
+                                          CustomColors.brownTextColor
+                                              .withOpacity(0.5),
+                                          CustomColors.brownTextColor
+                                        ])),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: CustomColors.starColor,
+                                          size: 15,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 5.w),
+                                          child: KText(
+                                            '4.5',
+                                            color: CustomColors.white,
+                                            fontSize: 12.sp,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )
                             ],
                           ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.only(bottom: 8.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  KText(
+                                    'Espresso',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 15.h),
+                                    child: KText(
+                                      'with Oat Milk',
+                                      fontSize: 10.sp,
+                                      color: CustomColors.black.withOpacity(0.6),
+                                    ),
+                                  ),
+                                  Text.rich(TextSpan(
+                                      children: [
+                                        TextSpan(
+                                            text: '\$',
+                                            style: defaultStyle.copyWith(
+                                                color: CustomColors.brown)),
+                                        const TextSpan(
+                                          text: '4.20',
+                                        )
+                                      ],
+                                      style: defaultStyle.copyWith(
+                                          fontWeight: FontWeight.w600)))
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 52.w,
+                              width: 52.w,
+                              decoration: BoxDecoration(
+                                  color: CustomColors.brown,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(25.r),
+                                      bottomRight: Radius.circular(25.r))),
+                              alignment: Alignment.center,
+                              child: Icon(
+                                Icons.add,
+                                color: CustomColors.white,
+                                size: 27,
+                              ),
+                            )
+                          ],
                         ),
                       )
                     ],
