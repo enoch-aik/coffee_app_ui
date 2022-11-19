@@ -1,18 +1,24 @@
 import 'package:coffee_app_ui/exports.dart';
 
+
 final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: CustomColors.lightThemeBgColor,
     appBarTheme:
         AppBarTheme(backgroundColor: CustomColors.transparent, elevation: 0),
     inputDecorationTheme: InputDecorationTheme(
-            alignLabelWithHint: true,contentPadding: const EdgeInsets.only(top: 5),
-        hintStyle: TextStyle(
-            fontFamily: 'SP Pro Display', color: CustomColors.textFieldHintColor,fontSize: 12.sp),
+        alignLabelWithHint: true,
+        contentPadding: const EdgeInsets.only(top: 5),
+        hintStyle: defaultStyle.copyWith(
+            fontSize: 12.sp, color: CustomColors.textFieldHintColor),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide:
                 BorderSide(color: CustomColors.textFieldColor, width: 1)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide:
+            BorderSide(color: CustomColors.brown, width: 1)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide: BorderSide(
@@ -25,13 +31,17 @@ final ThemeData darkTheme = ThemeData(
     appBarTheme:
         AppBarTheme(backgroundColor: CustomColors.transparent, elevation: 0),
     inputDecorationTheme: InputDecorationTheme(
-            alignLabelWithHint: true,contentPadding: const EdgeInsets.only(top: 5),
-        hintStyle: TextStyle(
-            fontFamily: 'SP Pro Display', color: CustomColors.textFieldHintColor,fontSize: 12.sp),
+        alignLabelWithHint: true,
+        contentPadding: const EdgeInsets.only(top: 5),
+        hintStyle: defaultStyle.copyWith(
+            fontSize: 12.sp, color: CustomColors.textFieldHintColor),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
-            borderSide: BorderSide(color: CustomColors.textFieldColor   )),
-        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: CustomColors.textFieldColor)),
+        focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide:
-                BorderSide(color: CustomColors.textFieldColor))));
+            BorderSide(color: CustomColors.brown, width: 1)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide: BorderSide(color: CustomColors.textFieldColor))));

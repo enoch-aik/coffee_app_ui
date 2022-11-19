@@ -26,12 +26,12 @@ class KText extends StatelessWidget {
     return Text(text,
         textAlign: textAlign,
         overflow: overflow,
-        style: TextStyle(
+        style: defaultStyle.copyWith(
           fontFamily: 'SP Pro Display',
           decoration: decoration,
           fontSize: fontSize ?? 14.sp,
           height: lineHeight,
-          color: color ?? CustomColors.brownTextColor,
+          color: color ?? CustomColors.defaultTextColor,
           fontWeight: fontWeight ?? FontWeight.w400,
         ));
   }

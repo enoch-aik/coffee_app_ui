@@ -1,5 +1,7 @@
 import 'package:coffee_app_ui/exports.dart';
-import 'package:coffee_app_ui/src/widgets/text.dart';
+import 'package:coffee_app_ui/src/constant/coffee.dart';
+import 'package:coffee_app_ui/src/screens/home/components/coffee_card.dart';
+import 'package:coffee_app_ui/src/screens/home/components/special_card.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/tab_indicator.dart';
@@ -15,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: CustomColors.white,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 40.h),
+            padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 30.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                     'Find the best\nCoffee to your taste',
                     fontWeight: FontWeight.w600,
                     fontSize: 22.sp,
-                    color: CustomColors.darkTextColor,
+                    color: CustomColors.defaultTextColor,
                   ),
                 ),
 
@@ -77,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       padding: EdgeInsets.zero,
                       isScrollable: true,
-                      unselectedLabelColor: CustomColors.darkTextColor,
+                      unselectedLabelColor: CustomColors.defaultTextColor,
                       tabs: const [
                         Tab(
                           text: 'Espresso',
@@ -93,62 +95,26 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ]),
                 ),
+                //COFFEE CARDS
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      children: List.generate(allCoffee.length,
+                          (index) => coffeeCard(coffee: allCoffee[index]))),
+                ),
+                //SPECIAL FOR YOU
 
-                Container(
-                  width: 160.w,
-                  height: 220.h,
-                  decoration: BoxDecoration(
-                      color: CustomColors.white.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(25.r),
-                      boxShadow: const [
-                        BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1))
-                      ]),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(10.w),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(25.r),
-                          child: Stack(
-                            children: [
-                              SizedBox(
-                                child: Image.asset(
-                                  'assets/images/espresso.png',
-                                  filterQuality: FilterQuality.high,
-                                ),
-                              ),
-                              Positioned(
-                                right: 0,
-                                top: 0,
-                                child: Container(
-                                  width: 73.w,
-                                  height: 26.h,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromRGBO(0, 0, 0, 0.9),
-                                      borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(25.r),
-                                          topRight: Radius.circular(25.r))),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: Colors.white,size: 15,
-                                      ),
-                                      KText(
-                                        '4.5',
-                                        color: CustomColors.white,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25.h),
+                  child: KText(
+                    'Special for you',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.sp,
+                    color: CustomColors.defaultTextColor,
                   ),
-                )
+                ),
+                specialCard(),
+                
               ],
             ),
           ),
