@@ -15,6 +15,10 @@ final ThemeData lightTheme = ThemeData(
             borderRadius: BorderRadius.circular(15.r),
             borderSide:
                 BorderSide(color: CustomColors.textFieldColor, width: 1)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide:
+            BorderSide(color: CustomColors.brown, width: 1)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide: BorderSide(
@@ -34,6 +38,10 @@ final ThemeData darkTheme = ThemeData(
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide: BorderSide(color: CustomColors.textFieldColor)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide:
+            BorderSide(color: CustomColors.brown, width: 1)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.r),
             borderSide: BorderSide(color: CustomColors.textFieldColor))));

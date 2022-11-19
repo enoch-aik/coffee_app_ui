@@ -1,5 +1,6 @@
 import 'package:coffee_app_ui/exports.dart';
-import 'package:coffee_app_ui/src/widgets/text.dart';
+import 'package:coffee_app_ui/src/constant/coffee.dart';
+import 'package:coffee_app_ui/src/screens/home/components/coffee_card.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/tab_indicator.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: CustomColors.white,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 40.h),
+            padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 30.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -93,130 +94,69 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ]),
                 ),
-//COFFEE CARD
+                //COFFEE CARDS
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      children: List.generate(allCoffee.length,
+                          (index) => coffeeCard(coffee: allCoffee[index]))),
+                ),
+                //SPECIAL FOR YOU
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25.h),
+                  child: KText(
+                    'Special for you',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.sp,
+                    color: CustomColors.defaultTextColor,
+                  ),
+                ),
                 Container(
-                  width: 160.w,
-                  //height: 220.h,
+                  width: 329.w,
+                  height: 145.h,
                   decoration: BoxDecoration(
-                      color: CustomColors.white.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(25.r),
-                      boxShadow: const [
-                        BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1))
-                      ]),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                      color: CustomColors.brown,
+                      borderRadius: BorderRadius.circular(25.r)),
+                  padding: EdgeInsets.all(10.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(10.w),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(25.r),
-                          child: Stack(
-                            children: [
-                              SizedBox(
-                                child: Image.asset(
-                                  'assets/images/espresso.png',
-                                  filterQuality: FilterQuality.high,
-                                ),
-                              ),
-                              Positioned(
-                                right: 0,
-                                top: 0,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(25.r),
-                                      topRight: Radius.circular(25.r)),
-                                  child: Container(
-                                    width: 73.w,
-                                    height: 26.h,
-                                    decoration: BoxDecoration(
-                                        color: CustomColors.brown,
-                                        //color: Color.fromRGBO(0, 0, 0, 0.9),
-                                        gradient: LinearGradient(colors: [
-                                          CustomColors.brownTextColor
-                                              .withOpacity(0.5),
-                                          CustomColors.brownTextColor
-                                        ])),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: CustomColors.starColor,
-                                          size: 15,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 5.w),
-                                          child: KText(
-                                            '4.5',
-                                            color: CustomColors.white,
-                                            fontSize: 12.sp,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.w),
-                        child: Row(
+                      Image.asset('assets/images/latte.png'),
+                      SizedBox(
+                        width: 149.w,
+                        height: 103.h,
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding:  EdgeInsets.only(bottom: 8.h),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  KText(
-                                    'Espresso',
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 15.h),
-                                    child: KText(
-                                      'with Oat Milk',
-                                      fontSize: 10.sp,
-                                      color: CustomColors.black.withOpacity(0.6),
-                                    ),
-                                  ),
-                                  Text.rich(TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '\$',
-                                            style: defaultStyle.copyWith(
-                                                color: CustomColors.brown)),
-                                        const TextSpan(
-                                          text: '4.20',
-                                        )
-                                      ],
-                                      style: defaultStyle.copyWith(
-                                          fontWeight: FontWeight.w600)))
-                                ],
-                              ),
+                            Text(
+                              'Special mixed and \nbrewed which you\nmust try!',
+                              style: GoogleFonts.inter(
+                                  color: CustomColors.white,
+                                  fontWeight: FontWeight.w600),
                             ),
-                            Container(
-                              height: 52.w,
-                              width: 52.w,
-                              decoration: BoxDecoration(
-                                  color: CustomColors.brown,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(25.r),
-                                      bottomRight: Radius.circular(25.r))),
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.add,
-                                color: CustomColors.white,
-                                size: 27,
-                              ),
+                            Text.rich(
+                              TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: '\$11.00  ',
+                                        style: defaultStyle.copyWith(
+                                            color: CustomColors.white,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: GoogleFonts.inter()
+                                                .fontFamily)),
+                                    const TextSpan(
+                                      text: '\$20.3',
+                                    )
+                                  ],
+                                  style: defaultStyle.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color:
+                                          CustomColors.white.withOpacity(0.4),
+                                      fontFamily:
+                                          GoogleFonts.inter().fontFamily)),
                             )
                           ],
                         ),
