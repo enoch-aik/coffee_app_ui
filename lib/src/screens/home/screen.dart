@@ -113,7 +113,8 @@ class HomeScreen extends StatelessWidget {
                     color: CustomColors.defaultTextColor,
                   ),
                 ),
-                specialCard()
+                specialCard(),
+                
               ],
             ),
           ),
