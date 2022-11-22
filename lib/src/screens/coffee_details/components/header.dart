@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:coffee_app_ui/exports.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget coffeeDetailsHeader(){
+Widget coffeeDetailsHeader(BuildContext context){
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
     child: ClipRRect(
@@ -20,7 +20,9 @@ Widget coffeeDetailsHeader(){
             Positioned(
                 left: 11.w,
                 top: 22.h,
-                child: SvgPicture.asset('assets/svg/back_icon.svg')),
+                child: InkWell(
+                    onTap: (){context.pop();},
+                    child: SvgPicture.asset('assets/svg/back_icon.svg'))),
             Positioned(
                 right: 11.w,
                 top: 22.h,

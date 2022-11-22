@@ -16,7 +16,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //HEADER IMAGE
-            coffeeDetailsHeader(),
+            coffeeDetailsHeader(context),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
