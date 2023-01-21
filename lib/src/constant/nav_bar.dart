@@ -16,6 +16,7 @@ final List<Widget> hostBottomNavBody = [
 
 List<BottomNavigationBarItem> bottomNavItems = const [
   BottomNavigationBarItem(
+
       icon: Icon(NavBarIcons.home),
       label: 'Home',
       activeIcon: Icon(NavBarIcons.homeFilled)),

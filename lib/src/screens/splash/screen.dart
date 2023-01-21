@@ -39,7 +39,7 @@ class SplashScreen extends StatelessWidget {
                   KText(
                     'Get the cup filled of your choice to stay\nfocused and awake. Different type of coffee\nmenu, hot latte cappuccino',
                     color: CustomColors.fadedTextColor,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,lineHeight: 1.5,
                   ),
                 ],
               ),
