@@ -21,5 +21,8 @@ List<Coffee> allCoffee = [
       price: 299)
 ];
 
-String coffeeDescription =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel tincidunt et ullamcorper eu, vivamus semper commodo............';
+const String coffeeDescription =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel tincidunt et '
+    'ullamcorper eu, vivamus semper commodo Lorem ipsum dolor sit amet,'
+    ' consectetur adipiscing elit. Vel tincidunt et ullamcorper eu, vivamus '
+    'semper commodo............';

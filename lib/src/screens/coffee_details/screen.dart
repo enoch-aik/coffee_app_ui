@@ -9,6 +9,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ValueNotifier<int> selectedChocolate = ValueNotifier(0);
+    ValueNotifier<int> selectedSize = ValueNotifier(0);
     return KScaffold(
       backgroundColor: CustomColors.white,
       body: SingleChildScrollView(
@@ -36,7 +37,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                     coffeeDescription,
                     expandText: 'Read More',
                     collapseText: 'Show less',
-                    maxLines: 2,
+                    maxLines: 3,
                     textAlign: TextAlign.left,
                     style: GoogleFonts.inter(
                         fontSize: 14.sp,
@@ -121,76 +122,131 @@ class CoffeeDetailsScreen extends StatelessWidget {
                 }),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 15.h, top: 25.h),
-                        child: Text(
-                          'Size',
-                          style: GoogleFonts.inter(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: CustomColors.defaultTextColor),
+              child: ValueListenableBuilder<int>(
+                  valueListenable: selectedSize,
+                  builder: (context, size, _) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 15.h, top: 25.h,left: 10.w),
+                              child: Text(
+                                'Size',
+                                style: GoogleFonts.inter(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: CustomColors.defaultTextColor),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ChoiceChip(
+                                  label: KText('S',
+                                      color: size == 0
+                                          ? CustomColors.white
+                                          : const Color(0xff777777)),
+                                  selected: size == 0 ? true : false,
+                                  selectedColor: CustomColors.brown,
+                                  disabledColor: CustomColors.white,
+                                  backgroundColor: CustomColors.white,
+                                  onSelected: (value) {
+                                    selectedSize.value = 0;
+                                  },
+                                  side: BorderSide(color: CustomColors.brown),
+                                ),
+                                ChoiceChip(
+                                  label: KText('M',
+                                      color: size == 1
+                                          ? CustomColors.white
+                                          : const Color(0xff777777)),
+                                  selected: size == 1 ? true : false,
+                                  selectedColor: CustomColors.brown,
+                                  disabledColor: CustomColors.white,
+                                  backgroundColor: CustomColors.white,
+                                  onSelected: (value) {
+                                    selectedSize.value = 1;
+                                  },
+                                  side: BorderSide(color: CustomColors.brown),
+                                ),
+                                ChoiceChip(
+                                  label: KText('L',
+                                      color: size == 2
+                                          ? CustomColors.white
+                                          : const Color(0xff777777)),
+                                  selected: size == 2 ? true : false,
+                                  selectedColor: CustomColors.brown,
+                                  disabledColor: CustomColors.white,
+                                  backgroundColor: CustomColors.white,
+                                  onSelected: (value) {
+                                    selectedSize.value = 2;
+                                  },
+                                  side: BorderSide(color: CustomColors.brown),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ChoiceChip(
-                            label: KText('S',
-                                color: selectedChocolate.value == 0
-                                    ? CustomColors.white
-                                    : const Color(0xff777777)),
-                            selected:
-                                selectedChocolate.value == 0 ? true : false,
-                            selectedColor: CustomColors.brown,
-                            disabledColor: CustomColors.white,
-                            backgroundColor: CustomColors.white,
-                            onSelected: (value) {
-                              selectedChocolate.value = 0;
-                            },
-                            side: BorderSide(color: CustomColors.brown),
-                          ),
-                          ChoiceChip(
-                            label: KText('M',
-                                color: selectedChocolate.value == 1
-                                    ? CustomColors.white
-                                    : const Color(0xff777777)),
-                            selected:
-                                selectedChocolate.value == 1 ? true : false,
-                            selectedColor: CustomColors.brown,
-                            disabledColor: CustomColors.white,
-                            backgroundColor: CustomColors.white,
-                            onSelected: (value) {
-                              selectedChocolate.value = 1;
-                            },
-                            side: BorderSide(color: CustomColors.brown),
-                          ),
-                          ChoiceChip(
-                            label: KText('L',
-                                color: selectedChocolate.value == 2
-                                    ? CustomColors.white
-                                    : const Color(0xff777777)),
-                            selected:
-                                selectedChocolate.value == 2 ? true : false,
-                            selectedColor: CustomColors.brown,
-                            disabledColor: CustomColors.white,
-                            backgroundColor: CustomColors.white,
-                            onSelected: (value) {
-                              selectedChocolate.value = 2;
-                            },
-                            side: BorderSide(color: CustomColors.brown),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 25.h, top: 18.h),
+                              child: Text(
+                                'Quantity',
+                                style: GoogleFonts.inter(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: CustomColors.defaultTextColor),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: CustomColors.brown),
+                                  alignment: Alignment.center,
+                                  child: KText(
+                                    '-',
+                                    color: CustomColors.white,
+                                    fontSize: 30,
+                                  ),
+                                ),
+                                Padding(
+                                  padding:  EdgeInsets.symmetric(horizontal: 18.w),
+                                  child: KText(
+                                    '1',
+                                    fontWeight: FontWeight.w500,
+                                    color:const Color(0xff2F3548),
+                                    fontSize: 25.sp,
+                                  ),
+                                ),
+                                Container(
+                                  width: 35.w,
+                                  height: 35.w,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: CustomColors.brown),
+                                  alignment: Alignment.center,
+                                  child: KText(
+                                    '+',
+                                    color: CustomColors.white,
+                                    fontSize: 20,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    );
+                  }),
             ),
           ],
         ),

@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                   : SingleChildScrollView(
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 23.w, vertical: 30.h),
+                            horizontal: 23.w, vertical: 20.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -136,6 +136,7 @@ class HomeScreen extends StatelessWidget {
 
               //BOTTOM NAV BAR
               bottomNavigationBar: BottomNavigationBar(
+
                 elevation: 0,
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: CustomColors.white,
