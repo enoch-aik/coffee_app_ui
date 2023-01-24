@@ -10,6 +10,8 @@ class CoffeeDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ValueNotifier<int> selectedChocolate = ValueNotifier(0);
     ValueNotifier<int> selectedSize = ValueNotifier(0);
+    ValueNotifier<int> quantity = ValueNotifier(1);
+
     return KScaffold(
       backgroundColor: CustomColors.white,
       body: SingleChildScrollView(
@@ -132,7 +134,8 @@ class CoffeeDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(bottom: 15.h, top: 25.h,left: 10.w),
+                              padding: EdgeInsets.only(
+                                  bottom: 15.h, top: 25.h, left: 10.w),
                               child: Text(
                                 'Size',
                                 style: GoogleFonts.inter(
@@ -205,39 +208,57 @@ class CoffeeDetailsScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Container(
-                                  width: 35.w,
-                                  height: 35.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: CustomColors.brown),
-                                  alignment: Alignment.center,
-                                  child: KText(
-                                    '-',
-                                    color: CustomColors.white,
-                                    fontSize: 30,
+                                InkWell(
+                                  onTap: () {
+                                    if (quantity.value > 1) {
+                                      quantity.value--;
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 35.w,
+                                    height: 35.w,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: CustomColors.brown),
+                                    alignment: Alignment.center,
+                                    child: KText(
+                                      '-',
+                                      color: CustomColors.white,
+                                      fontSize: 30,
+                                    ),
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.symmetric(horizontal: 18.w),
-                                  child: KText(
-                                    '1',
-                                    fontWeight: FontWeight.w500,
-                                    color:const Color(0xff2F3548),
-                                    fontSize: 25.sp,
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 18.w),
+                                  child: ValueListenableBuilder(
+                                    builder: (context, quantityState, _) {
+                                      return KText(
+                                        quantityState.toString(),
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xff2F3548),
+                                        fontSize: 25.sp,
+                                      );
+                                    },
+                                    valueListenable: quantity,
                                   ),
                                 ),
-                                Container(
-                                  width: 35.w,
-                                  height: 35.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: CustomColors.brown),
-                                  alignment: Alignment.center,
-                                  child: KText(
-                                    '+',
-                                    color: CustomColors.white,
-                                    fontSize: 20,
+                                InkWell(
+                                  onTap: () {
+                                    quantity.value++;
+                                  },
+                                  child: Container(
+                                    width: 35.w,
+                                    height: 35.w,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: CustomColors.brown),
+                                    alignment: Alignment.center,
+                                    child: KText(
+                                      '+',
+                                      color: CustomColors.white,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 )
                               ],
@@ -248,6 +269,43 @@ class CoffeeDetailsScreen extends StatelessWidget {
                     );
                   }),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      const KText('Price'),
+                      Text.rich(TextSpan(
+                          children: [
+                            TextSpan(
+                                text: '\$',
+                                style: GoogleFonts.poppins()
+                                    .copyWith(color: CustomColors.brown)),
+                            const TextSpan(text: '4.20')
+                          ],
+                          style: GoogleFonts.inter(
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w700,
+                              color: CustomColors.defaultTextColor)))
+                    ],
+                  ),
+                  Container(
+                    width: 190.w,
+                    height: 50.h,alignment: Alignment.center,
+                    decoration: ShapeDecoration(
+                      shape: const StadiumBorder(),
+                      color: CustomColors.brown,
+                    ),
+                    child: KText(
+                      'Buy Now',fontSize: 16.sp,fontWeight: FontWeight.w500,
+                      color: CustomColors.white,
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
